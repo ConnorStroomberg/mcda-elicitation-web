@@ -20,7 +20,7 @@ define(function(require) {
       // } else {
       //   $rootScope.activeTab = toState.name;
       // }
-      console.log(stateChange event);
+      console.log('stateChange event');
     });
 
     var currentProblem = $scope.workspace.problem;
