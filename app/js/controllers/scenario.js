@@ -9,7 +9,11 @@ define(function(require) {
     $scope.isEditTitleVisible = false;
     $scope.scenarioTitle = {};
     $scope.scenarios = scenarios;
-    $scope.activeTab = 'overview' // default
+    if($scope.$parent.selectedTab) {
+      $scope.activeTab = $scope.$parent.selectedTab;
+    } else {
+      $scope.activeTab = 'overview'; // default
+    }
 
     $scope.$watch('__scenario.state', function(state) {
       $scope.resultsAccessible = TaskDependencies.isAccessible($scope.tasks.results, state);
@@ -61,7 +65,7 @@ define(function(require) {
 
     function redirect(scenarioId) {
       var newState = _.omit($stateParams, 'id');
-      newState.id = scenarioId;
+      newState.id = scenarioId; 
       $state.go($state.current.name, newState, {
         reload: true
       });
@@ -108,6 +112,8 @@ define(function(require) {
     };
 
     $scope.scenarioChanged = function(newScenario) {
+      // Save selected tab on parent as this scope will get destoyed 
+      $scope.$parent.selectedTab = $scope.activeTab; 
       $state.go($state.current.name, {
         workspaceId: $scope.workspace.id,
         id: newScenario.id
