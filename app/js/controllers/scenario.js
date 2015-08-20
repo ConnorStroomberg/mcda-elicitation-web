@@ -13,7 +13,7 @@ define(function(require) {
       $scope.resultsAccessible = TaskDependencies.isAccessible($scope.tasks.results, scenario.state);
     });
 
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+    $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
       // var task = getTask(toState.name);
       // if(task && task.activeTab) {
       //   $rootScope.activeTab = task.activeTab;
