@@ -76,6 +76,8 @@ define(function(require) {
         'title': randomId(3, 'Scenario '),
         'state': $scope.__scenario.state
       };
+      // Save selected tab on parent as this scope will get destoyed 
+      $scope.$parent.selectedTab = $scope.activeTab
       ScenarioResource.save(_.omit($stateParams, 'id'), newScenario, function(savedScenario) {
         redirect(savedScenario.id);
       });
