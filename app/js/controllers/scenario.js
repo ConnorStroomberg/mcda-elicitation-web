@@ -6,9 +6,10 @@ define(function(require) {
 
   return function($scope, $location, $state, $stateParams, Tasks, TaskDependencies, scenarios, ScenarioResource, WorkspaceService) {
 
-    var getTask = function(taskId) {
-      return _.find(Tasks.available, function(task) { return task.id === taskId; });
-    };
+    $scope.isEditTitleVisible = false;
+    $scope.scenarioTitle = {};
+    $scope.scenarios = scenarios;
+    $scope.activeTab = 'overview' // default
 
     $scope.$watch('__scenario.state', function(state) {
       $scope.resultsAccessible = TaskDependencies.isAccessible($scope.tasks.results, state);
@@ -44,10 +45,6 @@ define(function(require) {
       return tasks;
     }, {});
 
-    $scope.isEditTitleVisible = false;
-    $scope.scenarioTitle = {};
-    $scope.scenarios = scenarios;
-
     function randomId(size, prefix) {
       var text = '';
       var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -58,6 +55,9 @@ define(function(require) {
       return prefix ? prefix + text : text;
     }
 
+    var getTask = function(taskId) {
+      return _.find(Tasks.available, function(task) { return task.id === taskId; });
+    };
 
     function redirect(scenarioId) {
       var newState = _.omit($stateParams, 'id');
