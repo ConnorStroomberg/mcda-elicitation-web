@@ -13,6 +13,16 @@ define(function(require) {
       $scope.resultsAccessible = TaskDependencies.isAccessible($scope.tasks.results, scenario.state);
     });
 
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+      // var task = getTask(toState.name);
+      // if(task && task.activeTab) {
+      //   $rootScope.activeTab = task.activeTab;
+      // } else {
+      //   $rootScope.activeTab = toState.name;
+      // }
+      console.log(stateChange event);
+    });
+
     var currentProblem = $scope.workspace.problem;
     $scope.workspace.$$valueTree = WorkspaceService.buildValueTree(currentProblem);
     $scope.workspace.$$scales = {};
