@@ -9,11 +9,22 @@ define(function(require) {
     $scope.isEditTitleVisible = false;
     $scope.scenarioTitle = {};
     $scope.scenarios = scenarios;
-    if($scope.$parent.selectedTab) {
-      $scope.activeTab = $scope.$parent.selectedTab;
-    } else {
-      $scope.activeTab = 'overview'; // default
+
+    var getTask = function(taskId) {
+      return _.find(Tasks.available, function(task) { return task.id === taskId; });
+    };
+
+    function determineActiveTab() {
+      var path = $location.path();
+      var activeStateName = path.substr(path.lastIndexOf('/') + 1);
+      var activeTask = getTask(activeStateName);
+      if (activeTask) {
+        $scope.activeTab = activeTask.activeTab;
+      } else {
+        $scope.activeTab = 'overview';
+      }
     }
+    determineActiveTab();
 
     $scope.$watch('__scenario.state', function(state) {
       $scope.resultsAccessible = TaskDependencies.isAccessible($scope.tasks.results, state);
@@ -59,10 +70,6 @@ define(function(require) {
       return prefix ? prefix + text : text;
     }
 
-    var getTask = function(taskId) {
-      return _.find(Tasks.available, function(task) { return task.id === taskId; });
-    };
-
     function redirect(scenarioId) {
       var newState = _.omit($stateParams, 'id');
       newState.id = scenarioId; 
@@ -76,8 +83,6 @@ define(function(require) {
         'title': randomId(3, 'Scenario '),
         'state': $scope.__scenario.state
       };
-      // Save selected tab on parent as this scope will get destoyed 
-      $scope.$parent.selectedTab = $scope.activeTab
       ScenarioResource.save(_.omit($stateParams, 'id'), newScenario, function(savedScenario) {
         redirect(savedScenario.id);
       });
@@ -114,8 +119,6 @@ define(function(require) {
     };
 
     $scope.scenarioChanged = function(newScenario) {
-      // Save selected tab on parent as this scope will get destoyed 
-      $scope.$parent.selectedTab = $scope.activeTab; 
       $state.go($state.current.name, {
         workspaceId: $scope.workspace.id,
         id: newScenario.id
