@@ -6,6 +6,10 @@ define(function(require) {
 
   return function($scope, $location, $state, $stateParams, Tasks, TaskDependencies, scenarios, ScenarioResource, WorkspaceService) {
 
+    var getTask = function(taskId) {
+      return _.find(Tasks.available, function(task) { return task.id === taskId; });
+    };
+
     $scope.$watch('__scenario.state', function(state) {
       $scope.resultsAccessible = TaskDependencies.isAccessible($scope.tasks.results, state);
     });
@@ -14,13 +18,12 @@ define(function(require) {
     });
 
     $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-      // var task = getTask(toState.name);
-      // if(task && task.activeTab) {
-      //   $rootScope.activeTab = task.activeTab;
-      // } else {
-      //   $rootScope.activeTab = toState.name;
-      // }
-      console.log('stateChange event');
+      var task = getTask(toState.name);
+      if(task && task.activeTab) {
+        $scope.activeTab = task.activeTab;
+      } else {
+        $scope.activeTab = toState.name;
+      }
     });
 
     var currentProblem = $scope.workspace.problem;
