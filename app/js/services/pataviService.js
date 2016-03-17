@@ -4,7 +4,7 @@ define(function(require) {
   var ab = require("mcda/lib/autobahn");
 
   var dependencies = [];
-  var PataviService = function($q) {
+  var PataviService = function($scope, $q) {
     var WS_URI = typeof window.config['WS_URI'] !== 'undefined' ? window.config['WS_URI'] : "ws://localhost:3000/ws";
     var BASE_URI = 'http://api.patavi.com/';
 
