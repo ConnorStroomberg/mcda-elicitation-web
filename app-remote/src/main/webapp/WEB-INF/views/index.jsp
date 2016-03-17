@@ -54,11 +54,7 @@
       <div class="color-stripe"></div>
     </section>
 
-    <div ng-if="error" class="row" ng-cloak>
-      <div class="columns">
-        <addis-alert type="alert" close="error.close()">{{error.code}} {{error.cause}}<span ng-show="error.error">&mdash; {{error.error}}</span></addis-alert>
-      </div>
-    </div>
+    <error-reporting></error-reporting>
 
     <div ui-view></div>
 
@@ -66,7 +62,7 @@
 
     <script>
      window.config = {
-         WS_URI: 'wss://patavi.drugis.org/ws',
+         WS_URI: 'wss://localhost:3000/ws',
          workspacesRepositoryUrl: '/workspaces/',
          _csrf_token : "${_csrf.token}",
          _csrf_header : "${_csrf.headerName}",

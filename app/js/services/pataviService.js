@@ -26,9 +26,14 @@ define(function(require) {
             resultsPromise.resolve(result);
             session.close();
           },
-          function(reason, code) {
+          function(code, reason) {
             console.log('error', code, reason);
             resultsPromise.reject(reason);
+            $scope.$emit('error', {
+              type: 'patavi',
+              code: code,
+              cause: reason
+            });
             session.close();
           }
         );
@@ -36,6 +41,11 @@ define(function(require) {
       }, function(code, reason) {
         resultsPromise.reject(reason);
         console.log(code, reason);
+        $scope.$emit('error', {
+          type: 'patavi',
+          code: code,
+          cause: reason
+        });
       });
     };
 

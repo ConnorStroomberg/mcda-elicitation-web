@@ -14,7 +14,7 @@ require.config({
     'domReady': 'bower_components/requirejs-domready/domReady',
     'mcda': 'bower_components/mcda-web/app/js',
     'mmfoundation': 'bower_components/angular-foundation/mm-foundation-tpls',
-    'error-reporting': 'bower_components/error-reporting/errorReporting'
+    'error-reporting': 'bower_components/error-reporting/errorReportingDirective'
   },
   baseUrl: '.',
   shim: {
