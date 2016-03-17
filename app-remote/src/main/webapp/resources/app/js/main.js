@@ -13,7 +13,8 @@ require.config({
     'MathJax': 'bower_components/MathJax/MathJax.js?config=TeX-AMS-MML_SVG',
     'domReady': 'bower_components/requirejs-domready/domReady',
     'mcda': 'bower_components/mcda-web/app/js',
-    'mmfoundation': 'bower_components/angular-foundation/mm-foundation-tpls'
+    'mmfoundation': 'bower_components/angular-foundation/mm-foundation-tpls',
+    'error-reporting': 'bower_components/error-reporting/errorReporting'
   },
   baseUrl: '.',
   shim: {
@@ -26,7 +27,8 @@ require.config({
     'nvd3': { deps: ['d3'], exports : 'nv' },
     'jQuery': { exports : 'jQuery' },
     'jquery-slider': { deps: ['jQuery'] },
-    'mmfoundation': { deps: ['angular'] }
+    'mmfoundation': { deps: ['angular'] },
+    'error-reporting': {deps: ['angular']}
   },
   priority: ['angular']
 });

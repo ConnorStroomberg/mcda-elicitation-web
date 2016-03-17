@@ -372,28 +372,6 @@ define(function(require) {
     };
   });
 
-
-  directives.directive('addisAlert', function(mcdaRootPath) {
-    return {
-      restrict: 'E',
-      transclude: true,
-      replace: true,
-      scope: {
-        type: '@',
-        close: '&'
-      },
-      link: function(scope, element) {
-        scope.animatedClose = function() {
-          $(element).fadeOut(200, function() {
-            scope.close();
-          });
-        };
-      },
-      templateUrl: mcdaRootPath + 'partials/alert.html'
-    };
-  });
-
-
   directives.directive('modal', function(mcdaRootPath) {
     return {
       restrict: 'E',

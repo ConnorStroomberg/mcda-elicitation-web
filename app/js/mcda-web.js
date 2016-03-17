@@ -21,6 +21,7 @@ define(function(require) {
   require('mcda/services/scaleRangeService');
   require('mcda/controllers');
   require('mcda/directives');
+  require('error-reporting');
 
   var dependencies = [
     'ngResource',
@@ -38,7 +39,8 @@ define(function(require) {
     'elicit.taskDependencies',
     'elicit.errorHandling',
     'elicit.routeFactory',
-    'elicit.pvfService'
+    'elicit.pvfService',
+    'errorReporting'
   ];
 
   var app = angular.module('elicit', dependencies);
@@ -51,8 +53,6 @@ define(function(require) {
 
   app.config(function(mcdaRootPath, Tasks, $stateProvider, $urlRouterProvider, $httpProvider, MCDARouteProvider) {
     var baseTemplatePath = mcdaRootPath + 'views/';
-
-    $httpProvider.interceptors.push('ErrorHandling');
 
     //ui-router code starts here
     $stateProvider.state('workspace', {
@@ -92,15 +92,6 @@ define(function(require) {
       }
     };
 
-    $rootScope.$on('error', function(e, message) {
-      $rootScope.$safeApply($rootScope, function() {
-        $rootScope.error = _.extend(message, {
-          close: function() {
-            delete $rootScope.error;
-          }
-        });
-      });
-    });
   });
 
   return app;

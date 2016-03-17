@@ -14,8 +14,8 @@
     "requirejs": "~2.1.11"
   },
   "devDependencies": {
-    "karma": "^0.13.8",
-    "karma-ng-html2js-preprocessor": "^0.1.2"
+    "karma": "^0.13.22",
+    "karma-ng-html2js-preprocessor": "^0.2.1"
   },
   "repository": "",
   "author": "",
