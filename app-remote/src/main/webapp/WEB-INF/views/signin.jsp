@@ -13,11 +13,11 @@
 
 <!-- Foundation 3 for IE 8 and earlier -->
 <!--[if lt IE 9]>
-<link rel="stylesheet" href="<c:url value="/bower_components/mcda-web/app/css/mcda-drugis-ie8.css" />">
+<link rel="stylesheet" href="<c:url value="/app/css/mcda-drugis-ie8.css" />">
 <![endif]-->
 <!-- Foundation 5 for IE 9 and earlier -->
 <!--[if gt IE 8]><!-->
-<link rel="stylesheet" href="<c:url value="/bower_components/mcda-web/app/css/mcda-drugis.css" />">
+<link rel="stylesheet" href="<c:url value="/app/css/mcda-drugis.css" />">
 <!--<![endif]-->
 <script type="text/javascript" src="<c:url value="/bower_components/foundation/js/vendor/custom.modernizr.js" />"></script>
 <script type="text/javascript" src="<c:url value="/bower_components/bowser/bowser.min.js" />"></script>

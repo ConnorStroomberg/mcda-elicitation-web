@@ -5,9 +5,9 @@ define(function(require) {
 
   var dependencies = ['ngResource'];
 
-  var WorkspaceResource = function($q, $resource, $rootScope, MCDAPataviService) {
+  var WorkspaceResource = function($resource) {
 
-    var resource = $resource(
+    return $resource(
       window.config.workspacesRepositoryUrl + ':workspaceId', { workspaceId: '@id' }, {
         create: { method:'POST', transformRequest: function(problem, headersGetter) {
           return angular.toJson({
@@ -18,7 +18,6 @@ define(function(require) {
       }
     );
 
-    return resource;
   };
 
   return angular.module('elicit.workspaceResource', dependencies).factory('WorkspaceResource', WorkspaceResource);

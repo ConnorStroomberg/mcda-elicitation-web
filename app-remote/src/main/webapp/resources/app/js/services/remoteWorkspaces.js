@@ -5,7 +5,7 @@ define(function(require) {
   var dependencies = ['ngResource'];
 
   var Workspaces = function($resource) {
-    var WorkspaceResource = $resource(config.workspacesRepositoryUrl + ':workspaceId', {
+    return $resource(config.workspacesRepositoryUrl + ':workspaceId', {
       workspaceId: '@id'
     });
   };

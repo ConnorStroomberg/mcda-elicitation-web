@@ -2,25 +2,25 @@
 define(function(require) {
   var angular = require("angular");
   var _ = require("underscore");
-  var Config = require("mcda/config");
+  var Config = require("app/js/config");
 
   require('mmfoundation');
   require('angular-ui-router');
   require('angular-resource');
-  require('mcda/services/remarks');
-  require('mcda/services/routeFactory');
-  require('mcda/services/workspaceResource');
-  require('mcda/services/workspaceService');
-  require('mcda/services/scenarioResource');
-  require('mcda/services/taskDependencies');
-  require('mcda/services/errorHandling');
-  require('mcda/services/hashCodeService');
-  require('mcda/services/pataviService');
-  require('mcda/services/partialValueFunction');
-  require('mcda/services/util');
-  require('mcda/services/scaleRangeService');
-  require('mcda/controllers');
-  require('mcda/directives');
+  require('app/js/services/remarks');
+  require('app/js/services/routeFactory');
+  require('app/js/services/workspaceResource');
+  require('app/js/services/workspaceService');
+  require('app/js/services/scenarioResource');
+  require('app/js/services/taskDependencies');
+  require('app/js/services/errorHandling');
+  require('app/js/services/hashCodeService');
+  require('app/js/services/pataviService');
+  require('app/js/services/partialValueFunction');
+  require('app/js/services/util');
+  require('app/js/services/scaleRangeService');
+  require('app/js/controllers');
+  require('app/js/directives');
   require('error-reporting');
 
   var dependencies = [

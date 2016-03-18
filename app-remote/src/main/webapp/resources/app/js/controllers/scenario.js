@@ -2,7 +2,7 @@
 define(function(require) {
   var angular = require('angular');
   var _ = require('underscore');
-  var Config = require('mcda/config');
+  var Config = require('app/js/config');
 
   return function($scope, $location, $state, $stateParams, Tasks, TaskDependencies, scenarios, ScenarioResource, WorkspaceService) {
 
@@ -49,6 +49,11 @@ define(function(require) {
 
     WorkspaceService.getObservedScales(currentProblem).then(function(observedScales) {
       $scope.workspace.$$scales.observed = observedScales;
+    }, function(cause){
+        $scope.$emit('error', {
+          type: 'patavi',
+          cause: cause
+        });
     });
 
     ScenarioResource.get($stateParams).$promise.then(function(result) {

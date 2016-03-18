@@ -1,10 +1,10 @@
 'use strict';
 define(function(require) {
   var angular = require("angular");
-  var ab = require("mcda/lib/autobahn");
+  var ab = require("app/js/lib/autobahn");
 
   var dependencies = [];
-  var PataviService = function($scope, $q) {
+  var PataviService = function($q) {
     var WS_URI = typeof window.config['WS_URI'] !== 'undefined' ? window.config['WS_URI'] : "ws://localhost:3000/ws";
     var BASE_URI = 'http://api.patavi.com/';
 
@@ -29,11 +29,6 @@ define(function(require) {
           function(code, reason) {
             console.log('error', code, reason);
             resultsPromise.reject(reason);
-            $scope.$emit('error', {
-              type: 'patavi',
-              code: code,
-              cause: reason
-            });
             session.close();
           }
         );
@@ -41,11 +36,6 @@ define(function(require) {
       }, function(code, reason) {
         resultsPromise.reject(reason);
         console.log(code, reason);
-        $scope.$emit('error', {
-          type: 'patavi',
-          code: code,
-          cause: reason
-        });
       });
     };
 

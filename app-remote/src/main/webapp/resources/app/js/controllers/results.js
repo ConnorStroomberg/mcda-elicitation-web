@@ -15,10 +15,11 @@ define(function(require) {
         state.results = results.results;
       };
 
-      var errorHandler = function(code, error) {
-        var message = { code: (code && code.desc) ? code.desc : code,
-                        cause: error };
-        $scope.$root.$broadcast('error', message);
+      var errorHandler = function(cause) {
+        $scope.emit('error', {
+            type: 'patavi',
+            cause: cause
+        });
       };
 
       var updateHandler = _.throttle(function(update) {

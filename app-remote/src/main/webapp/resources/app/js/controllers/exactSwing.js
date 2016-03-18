@@ -2,8 +2,8 @@
 define(function(require) {
   var angular = require("angular");
   var _ = require("underscore");
-  var Util = require("mcda/controllers/helpers/util");
-  var Wizard = require("mcda/controllers/helpers/wizard");
+  var Util = require("app/js/controllers/helpers/util");
+  var Wizard = require("app/js/controllers/helpers/wizard");
 
   return function($scope, $state, $stateParams, $injector, currentScenario, taskDefinition, PartialValueFunction) {
     var pvf = PartialValueFunction;

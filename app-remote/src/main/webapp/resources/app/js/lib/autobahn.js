@@ -17,7 +17,7 @@
 
 "use strict";
 
-define(['mcda/lib/when'], function(when) {
+define(['app/js/lib/when'], function(when) {
 /** @define {string} */
 var AUTOBAHNJS_VERSION = '?.?.?';
 

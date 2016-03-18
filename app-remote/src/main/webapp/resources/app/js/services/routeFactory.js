@@ -1,7 +1,7 @@
 'use strict';
 define(function(require) {
   var angular = require('angular');
-  var Config = require('mcda/config');
+  var Config = require('app/js/config');
   var _ = require('underscore');
 
   var dependencies = [];

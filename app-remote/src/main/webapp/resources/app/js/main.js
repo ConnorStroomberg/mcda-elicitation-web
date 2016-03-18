@@ -2,6 +2,7 @@
 
 require.config({
   paths: {
+    'mcda': '.',
     'jQuery': 'bower_components/jquery/dist/jquery',
     'underscore': 'bower_components/underscore/underscore',
     'angular': 'bower_components/angular/angular',
@@ -12,7 +13,6 @@ require.config({
     'nvd3': 'bower_components/nvd3-community/build/nv.d3',
     'MathJax': 'bower_components/MathJax/MathJax.js?config=TeX-AMS-MML_SVG',
     'domReady': 'bower_components/requirejs-domready/domReady',
-    'mcda': 'bower_components/mcda-web/app/js',
     'mmfoundation': 'bower_components/angular-foundation/mm-foundation-tpls',
     'error-reporting': 'bower_components/error-reporting/errorReportingDirective'
   },
@@ -35,7 +35,7 @@ require.config({
 
 define(function (require) {
   var angular = require("angular");
-  var app = require("mcda/mcda-web");
+  var app = require("/app/js/mcda-web.js");
 
   angular.bootstrap(document, ['elicit']);
 });
